@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="File">
+	<insert id="insertFiles" parameterType="filebean">
+		INSERT INTO TBL_FILE VALUES
+		(#{boardnum},#{filename},#{realname})
+	</insert>
+	<select id="getDetail" parameterType="_int" resultType="filebean">
+		SELECT * FROM TBL_FILE WHERE BOARDNUM=${boardnum}
+	</select>
+	
+	<delete id="deleteFiles" parameterType="_int">
+		DELETE FROM TBL_FILE WHERE BOARDNUM=${boardnum}
+	</delete>
+	<delete id="deleteByName" parameterType="string">
+		DELETE FROM TBL_FILE WHERE FILENAME=#{filename}
+	</delete>
+</mapper>
